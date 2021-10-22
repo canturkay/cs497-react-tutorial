@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getDatabase, onValue, ref } from 'firebase/database';
-import { useState, useEffect } from 'react';
+import { getDatabase, onValue, ref, set } from 'firebase/database';
+import { useState, useEffect, } from 'react';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBTyhp8njdEM4JOl0QtQC7RxIu3HMuIYT8",
@@ -40,3 +40,7 @@ export const useData = (path, transform) => {
 
   return [data, loading, error];
 };
+
+export const setData = (path, value) => (
+  set(ref(database, path), value)
+);
